@@ -2,42 +2,41 @@
 
 \subsubsection*{Kratak opis}
 
-Projektni menadžer za film na kom radi pravi nove zadatke i dodeljuje ih članovima produkcionog tima. Može da dodeli i zadatak koji već postoji, kao i da zadatak prebaci na drugog člana. Pre svake dodele sistem proverava koliko izabrani član trenutno ima zadataka, a posle dodele ga obaveštava o novom zadatku.
+Projektni menadžer pravi zadatke za film i dodeljuje ih članovima tima. Zadatak može da bude nov ili već postojeći, a postojeći zadatak može da se prebaci na drugog člana. Pre dodele sistem proverava koliko član već ima posla, a posle dodele ga obaveštava.
 
 \subsubsection*{Akteri}
 \begin{itemize}
-    \item \textbf{Projektni menadžer}: pravi zadatke za film i dodeljuje ih članovima tima.
-    \item \textbf{Član produkcionog tima}: dobija obaveštenje o zadatku koji mu je dodeljen. U zavisnosti od vrste zadatka, to je scenarista, storyboarder, dizajner, animator, audio dizajner ili montažer.
+    \item \textbf{Projektni menadžer}: pravi zadatke i dodeljuje ih članovima tima.
+    \item \textbf{Član produkcionog tima}: dobija zadatak i obaveštenje o njemu. To može biti scenarista, storyboarder, dizajner, animator, audio dizajner ili montažer.
 \end{itemize}
 
 \subsubsection*{Preduslovi}
 \begin{itemize}
     \item Projektni menadžer je prijavljen na sistem.
-    \item Film postoji u sistemu i za njega je formiran produkcioni tim.
+    \item Za film postoji produkcioni tim.
 \end{itemize}
 
 \subsubsection*{Postuslovi}
 \begin{itemize}
-    \item Zadatak je sačuvan u stanju ,,Dodeljen'' i ima izvršioca.
-    \item Izvršilac je dobio obaveštenje o zadatku, a kod preraspodele i prethodni izvršilac.
-    \item Pregled trenutnih poslova tima je ažuriran.
+    \item Zadatak je dodeljen članu tima i nalazi se u stanju ,,Dodeljen''.
+    \item Član kome je zadatak dodeljen je obavešten.
 \end{itemize}
 
 \subsubsection*{Osnovni tok}
 \begin{enumerate}
-    \item Projektni menadžer bira film i opciju ,,Zadaci''.
-    \item Sistem prikazuje spisak zadataka filma, sa stanjem i izvršiocem za svaki zadatak.
+    \item Projektni menadžer bira film za koji raspoređuje zadatke.
+    \item Sistem prikazuje zadatke tog filma.
     \item Projektni menadžer bira način dodele:
     \begin{enumerate}
         \item Ukoliko pravi nov zadatak, izvršava se podtok P1.
-        \item Ukoliko dodeljuje zadatak koji već postoji, izvršava se podtok P2.
+        \item Ukoliko dodeljuje postojeći zadatak, izvršava se podtok P2.
     \end{enumerate}
-    \item Sistem prikazuje članove tima čija uloga odgovara vrsti zadatka. Za svakog člana prikazuje koliko trenutno ima zadataka i koliko najviše sme da ima.
-    \item Projektni menadžer bira člana i opciju ,,Dodeli''.
+    \item Sistem prikazuje članove tima koji mogu da dobiju taj zadatak i koliko svaki od njih već ima zadataka.
+    \item Projektni menadžer bira člana i potvrđuje dodelu.
     \item Sistem proverava trenutne poslove izabranog člana.
-    \item Sistem čuva dodelu i menja stanje zadatka u ,,Dodeljen''.
-    \item Sistem šalje obaveštenje izabranom članu i ažurira pregled trenutnih poslova tima.
-    \item Sistem prikazuje ažuriran spisak zadataka.
+    \item Sistem čuva dodelu i zadatak prelazi u stanje ,,Dodeljen''.
+    \item Sistem obaveštava člana o zadatku i ažurira pregled poslova tima.
+    \item Sistem prikazuje ažurirane zadatke filma.
 \end{enumerate}
 
 Koraci 3 do 9 se ponavljaju dok projektni menadžer ima zadataka za dodelu.
@@ -46,67 +45,58 @@ Koraci 3 do 9 se ponavljaju dok projektni menadžer ima zadataka za dodelu.
 
 \paragraph*{P1: Dodela novog zadatka}
 \begin{enumerate}
-    \item Sistem prikazuje formular za nov zadatak.
-    \item Projektni menadžer unosi podatke o zadatku.
+    \item Sistem traži podatke o novom zadatku.
+    \item Projektni menadžer unosi podatke.
     \item Projektni menadžer potvrđuje unos.
-    \item Sistem proverava unete podatke.
-    \item Sistem čuva zadatak u stanju ,,Kreiran'' i nastavlja se korak 4 osnovnog toka.
+    \item Sistem proverava podatke.
+    \item Sistem čuva zadatak u stanju ,,Kreiran''. Nastavlja se korak 4 osnovnog toka.
 \end{enumerate}
 
 \paragraph*{P2: Dodela postojećeg zadatka}
 \begin{enumerate}
-    \item Projektni menadžer bira sa spiska zadatak koji je u stanju ,,Kreiran'' ili ,,Dodeljen''.
-    \item Sistem prikazuje podatke o zadatku i trenutnog izvršioca, ako ga zadatak ima. Nastavlja se korak 4 osnovnog toka.
+    \item Projektni menadžer bira postojeći zadatak.
+    \item Sistem prikazuje podatke o zadatku i kome je trenutno dodeljen, ako je dodeljen. Nastavlja se korak 4 osnovnog toka.
 \end{enumerate}
 
 \subsubsection*{Alternativni tokovi}
 
-\paragraph*{A1: Neispravno popunjen formular}
+\paragraph*{A1: Neispravni podaci}
 \begin{itemize}
-    \item U koraku 4 podtoka P1, ako neko polje nije dobro popunjeno, sistem označava to polje i obaveštava projektnog menadžera. Projektni menadžer ispravlja podatke i nastavlja se korak 3 podtoka P1.
+    \item U koraku 4 podtoka P1, ako podaci nisu ispravni, sistem obaveštava projektnog menadžera šta treba da ispravi. Projektni menadžer ispravlja podatke i nastavlja se korak 3 podtoka P1.
 \end{itemize}
 
-\paragraph*{A2: Rok zadatka je posle roka faze}
+\paragraph*{A2: Nema odgovarajućeg člana}
 \begin{itemize}
-    \item U koraku 4 podtoka P1, ako je rok zadatka posle roka faze produkcije kojoj zadatak pripada, sistem prikazuje rok faze i traži da se rok promeni. Projektni menadžer menja rok i nastavlja se korak 3 podtoka P1.
+    \item U koraku 4 osnovnog toka, ako u timu nema člana koji može da dobije zadatak, sistem o tome obaveštava projektnog menadžera. Zadatak ostaje kakav je bio i nastavlja se korak 9 osnovnog toka.
 \end{itemize}
 
-\paragraph*{A3: Nema člana sa odgovarajućom ulogom}
+\paragraph*{A3: Član je preopterećen}
 \begin{itemize}
-    \item U koraku 4 osnovnog toka, ako u timu nema nijednog člana čija uloga odgovara vrsti zadatka, sistem o tome obaveštava projektnog menadžera. Zadatak ostaje u stanju u kom je bio i nastavlja se korak 9 osnovnog toka.
-\end{itemize}
-
-\paragraph*{A4: Izabrani član je preopterećen}
-\begin{itemize}
-    \item U koraku 6 osnovnog toka, ako bi izabrani član sa ovim zadatkom imao više zadataka nego što sme, sistem prikazuje upozorenje.
+    \item U koraku 6 osnovnog toka, ako je izabrani član preopterećen, sistem prikazuje upozorenje.
     \item Ako projektni menadžer izabere drugog člana, nastavlja se korak 5 osnovnog toka.
-    \item Ako projektni menadžer ipak potvrdi dodelu, sistem beleži da je dodela potvrđena uprkos upozorenju i nastavlja se korak 7 osnovnog toka.
+    \item Ako projektni menadžer ipak potvrdi dodelu, nastavlja se korak 7 osnovnog toka.
 \end{itemize}
 
-\paragraph*{A5: Odustajanje od dodele}
+\paragraph*{A4: Odustajanje od dodele}
 \begin{itemize}
-    \item U koraku 5 osnovnog toka projektni menadžer može da odustane od dodele. Zadatak ostaje u stanju u kom je bio (,,Kreiran'', ili ,,Dodeljen'' sa starim izvršiocem) i nastavlja se korak 9 osnovnog toka.
+    \item U koraku 5 osnovnog toka projektni menadžer može da odustane. Zadatak ostaje kakav je bio i nastavlja se korak 9 osnovnog toka.
 \end{itemize}
 
-\paragraph*{A6: Preraspodela zadatka}
+\paragraph*{A5: Preraspodela zadatka}
 \begin{itemize}
-    \item U koraku 8 osnovnog toka, ako je zadatak već imao izvršioca, sistem obaveštava i prethodnog izvršioca da zadatak više nije njegov. Nastavlja se korak 9 osnovnog toka.
+    \item U koraku 8 osnovnog toka, ako je zadatak pre toga bio dodeljen drugom članu, sistem obaveštava i tog člana da zadatak više nije njegov. Nastavlja se korak 9 osnovnog toka.
 \end{itemize}
 
 \subsubsection*{Specijalni zahtevi}
 \begin{itemize}
-    \item Zadatke filma može da pravi, dodeljuje i preraspodeljuje samo projektni menadžer koji vodi taj film.
-    \item Svaka dodela i preraspodela se čuva u istoriji zadatka: ko je dodelio zadatak, kome, kada i da li je dodela potvrđena uprkos upozorenju. Istorija zadatka se ne može menjati ni brisati.
-    \item Član tima dobija obaveštenje odmah posle dodele.
+    \item Zadatke filma može da dodeljuje samo projektni menadžer tog filma.
+    \item Sistem čuva istoriju dodela i preraspodela zadataka.
 \end{itemize}
 
 \subsubsection*{Dodatne informacije}
 \begin{itemize}
-    \item Podaci o zadatku su: vrsta (scenario, storyboard, dizajn, animacija, zvuk ili montaža), deo filma na koji se odnosi (ceo film, scena ili kadar), opis, rok i prioritet (nizak, srednji ili visok).
-    \item Scenario može da dobije samo scenarista, storyboard storyboarder, dizajn dizajner, animaciju animator, zvuk audio dizajner, a montažu montažer.
-    \item Trenutni zadaci člana su zadaci u stanju ,,Dodeljen'' ili ,,Vraćen na doradu''. Koliko najviše zadataka član sme da ima određuje se pri formiranju tima (SU-04); ako nije određeno, to je pet zadataka.
-    \item Obaveštenje sadrži naziv zadatka, film, rok i ime projektnog menadžera.
-    \item Predaja materijala (SU-08) i pregled i odobravanje materijala (SU-09) su posebni slučajevi upotrebe.
+    \item Vrsta zadatka određuje koji članovi tima mogu da ga dobiju.
+    \item Član je preopterećen kada ima više zadataka nego što sme da ima u isto vreme.
 \end{itemize}
 
 
