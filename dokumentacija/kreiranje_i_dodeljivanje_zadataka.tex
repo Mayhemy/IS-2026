@@ -32,7 +32,7 @@ Projektni menadžer za izabrani film dodeljuje zadatke članovima produkcionog t
         \item Ukoliko kreira nov zadatak, izvršava se podtok P1 (Dodela novog zadatka).
         \item Ukoliko dodeljuje zadatak koji već postoji, izvršava se podtok P2 (Dodela postojećeg zadatka).
     \end{enumerate}
-    \item Sistem prikazuje članove produkcionog tima čija uloga odgovara vrsti zadatka, sa brojem trenutnih zadataka svakog člana.
+    \item Sistem prikazuje članove produkcionog tima čija uloga odgovara vrsti zadatka, sa brojem trenutnih zadataka i maksimalnim brojem zadataka svakog člana.
     \item Projektni menadžer bira člana produkcionog tima i potvrđuje dodelu.
     \item Sistem proverava trenutne poslove izabranog člana.
     \item Sistem čuva dodelu i postavlja stanje zadatka na ,,Dodeljen''.
@@ -78,7 +78,7 @@ Koraci 3--9 se ponavljaju dok projektni menadžer ima zadataka za dodelu.
 
 \paragraph*{A4: Izabrani član je preopterećen}
 \begin{itemize}
-    \item U koraku 6 osnovnog toka, ako izabrani član ima više trenutnih zadataka od dozvoljenog, sistem prikazuje upozorenje.
+    \item U koraku 6 osnovnog toka, ako bi izabrani član novom dodelom premašio svoj maksimalan broj zadataka, sistem prikazuje upozorenje.
     \item Ako projektni menadžer odluči da izabere drugog člana, proces se nastavlja u koraku 5 osnovnog toka.
     \item Ako projektni menadžer potvrdi dodelu, sistem beleži da je dodela potvrđena uprkos upozorenju. Proces se nastavlja u koraku 7 osnovnog toka.
 \end{itemize}
@@ -95,14 +95,16 @@ Koraci 3--9 se ponavljaju dok projektni menadžer ima zadataka za dodelu.
 
 \subsubsection*{Specijalni zahtevi}
 \begin{itemize}
-    \item Spisak članova tima sa brojem trenutnih zadataka prikazuje se za najviše dve sekunde.
+    \item Zadatke filma može da kreira, dodeljuje i preraspodeljuje samo projektni menadžer koji je zadužen za taj film.
+    \item Svaka dodela i preraspodela zadatka se trajno beleži: ko je dodelio zadatak, kome, kada i da li je dodela potvrđena uprkos upozorenju o preopterećenju. Taj zapis se ne može menjati ni brisati.
+    \item Obaveštenje o dodeljenom zadatku izvršilac dobija odmah po dodeli.
 \end{itemize}
 
 \subsubsection*{Dodatne informacije}
 \begin{itemize}
     \item Podaci o zadatku su: vrsta (scenario, storyboard, dizajn, animacija, zvuk, montaža), element produkcije na koji se odnosi (film, scena ili kadar), opis, rok i prioritet (nizak, srednji, visok).
     \item Vrsta zadatka određuje ulogu izvršioca: scenario -- Scenarista, storyboard -- Storyboarder, dizajn -- Dizajner, animacija -- Animator, zvuk -- Audio dizajner, montaža -- Montažer.
-    \item Trenutni zadaci člana su zadaci u stanju ,,Dodeljen'' ili ,,Vraćen na doradu''. Član je preopterećen ako ima više od pet trenutnih zadataka.
+    \item Trenutni zadaci člana su zadaci u stanju ,,Dodeljen'' ili ,,Vraćen na doradu''. Svaki član produkcionog tima ima maksimalan broj zadataka, koji se određuje pri formiranju tima (SU-04 Formiranje produkcionog tima); ako nije određen, iznosi pet. Član je preopterećen ako bi novom dodelom premašio svoj maksimalan broj zadataka.
     \item Obaveštenje sadrži naziv zadatka, film, rok i ime projektnog menadžera.
     \item Veze na dijagramu slučaja upotrebe: ,,Dodela novog zadatka'' i ,,Dodela postojećeg zadatka'' su dve vrste ovog slučaja (generalizacija) i opisane su podtokovima P1 i P2. ,,Provera trenutnih poslova člana'' (korak 6) i ,,Obaveštavanje člana produkcionog tima'' (korak 8) izvršavaju se uvek (\guillemotleft{}include\guillemotright{}). ,,Potvrda dodele preopterećenom članu'' izvršava se samo kada je izabrani član preopterećen (alternativni tok A4, \guillemotleft{}extend\guillemotright{}).
 \end{itemize}
