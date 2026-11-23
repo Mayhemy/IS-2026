@@ -2,12 +2,7 @@
 
 \subsubsection*{Kratak opis}
 
-Producent za projekat animiranog filma postavlja ukupni budžet i planira
-budžet i rokove po fazama produkcije (razvoj ideje, scenario, dizajn,
-animacija, montaža, postprodukcija, distribucija). Tokom produkcije evidentira
-troškove, prati utrošak sredstava i poštovanje rokova, a kada se približi
-granici budžeta ili roka, preraspodeljuje sredstva ili menja rok faze.
-Projektni menadžer obaveštava se o promenama rokova faza, jer na osnovu njih organizuje produkciju i dodeljuje zadatke.
+Producent za projekat animiranog filma postavlja ukupni budžet i rokove po fazama produkcije, a zatim evidentira troškove i prati utrošak. Kada utrošak ili rok pređu dozvoljenu granicu, producent preraspodeljuje sredstva ili menja rok faze, a projektni menadžer se obaveštava o promeni roka.
 
 \subsubsection*{Akteri}
 \begin{itemize}
@@ -31,61 +26,85 @@ Projektni menadžer obaveštava se o promenama rokova faza, jer na osnovu njih o
 \begin{enumerate}
     \item Producent bira projekat i opciju ,,Budžet i rokovi''.
     \item Sistem prikazuje pregled faza produkcije sa planiranim budžetom, rokovima i trenutnim utroškom.
-    \item Producent bira opciju ,,Planiraj budžet'' i unosi ukupni budžet projekta, kao i za svaku fazu planirani iznos, datum početka i datum završetka.
+    \item Producent bira opciju ,,Planiraj budžet'' i unosi ukupni budžet projekta, kao i budžet i rokove za svaku fazu.
     \item Sistem proverava podatke i čuva budžet i rokove.
-    \item Producent bira opciju ,,Dodaj trošak'' i unosi fazu, iznos, datum i opis troška.
-    \item Sistem proverava podatke, evidentira trošak, ažurira utrošak faze i prikazuje preostala sredstva i procenat utroška. Koraci 5 i 6 se ponavljaju kad god nastane novi trošak.
-    \item Ako utrošak pređe 80\% budžeta faze ili je rok faze probijen, sistem prikazuje upozorenje i nudi preraspodelu sredstava (podtok P2) ili izmenu roka (podtok P1).
+    \item Producent bira opciju ,,Dodaj trošak'' i unosi podatke o trošku.
+    \item Sistem proverava podatke, evidentira trošak, ažurira utrošak faze i prikazuje preostala sredstva. Koraci 5 i 6 se ponavljaju za svaki novi trošak.
 \end{enumerate}
 
 \subsubsection*{Podtokovi}
 
-\paragraph*{P1: Izmena roka faze}
+\paragraph*{P1: Preraspodela sredstava između faza}
 \begin{enumerate}
-    \item Producent u pregledu faza bira fazu i opciju ,,Izmeni rok''.
+    \item Producent bira opciju ,,Preraspodeli sredstva''.
+    \item Producent bira fazu iz koje se sredstva prenose, fazu u koju se prenose, unosi iznos i razlog i potvrđuje.
+    \item Sistem proverava da budžet faze iz koje se sredstva prenose ne padne ispod već utrošenog iznosa, ažurira budžete obe faze i beleži izmenu. Ukupni budžet projekta ostaje isti.
+\end{enumerate}
+Podtok se poziva iz alternativnog toka A3, a po završetku se nastavlja od koraka 5 osnovnog toka.
+
+\paragraph*{P2: Izmena roka faze}
+\begin{enumerate}
+    \item Producent bira fazu i opciju ,,Izmeni rok''.
     \item Producent unosi novi datum početka i/ili završetka i razlog izmene.
     \item Sistem proverava da novi rok ne dolazi u sukob sa fazama koje zavise od izabrane faze, čuva izmenu i obaveštava projektnog menadžera.
 \end{enumerate}
-
-\paragraph*{P2: Preraspodela sredstava između faza}
-\begin{enumerate}
-    \item Producent bira opciju ,,Preraspodeli sredstva''.
-    \item Producent bira fazu iz koje se sredstva prenose, fazu u koju se prenose i iznos, unosi razlog i potvrđuje.
-    \item Sistem proverava da budžet faze izvora ne padne ispod već utrošenog iznosa, ažurira budžete obe faze i beleži izmenu. Ukupni budžet projekta ostaje isti.
-\end{enumerate}
-
-\paragraph*{P3: Pregled stanja budžeta i rokova}
-\begin{enumerate}
-    \item Producent bira opciju ,,Stanje budžeta i rokova''.
-    \item Sistem prikazuje za svaku fazu planirani budžet, utrošena sredstva, preostali iznos, odstupanje od plana i status roka (u roku, kasni, završena).
-    \item Producent po želji filtrira prikaz po fazi ili vremenskom periodu.
-\end{enumerate}
+Podtok se poziva iz alternativnog toka A4, a po završetku se nastavlja od koraka 5 osnovnog toka.
 
 \subsubsection*{Alternativni tokovi}
 
 \paragraph*{A1: Nepopunjena ili neispravna polja}
 \begin{itemize}
-    \item U koracima 4 i 6 osnovnog toka, kao i u koracima 3 podtoka P1 i P2, ako neko obavezno polje nije popunjeno ili je neispravno (datum završetka pre datuma početka, zbir budžeta faza veći od ukupnog budžeta), sistem ga označava i vraća producenta na unos.
+    \item \textbf{Izaziva ga:} korak 4 i korak 6 osnovnog toka, kao i korak 3 podtokova P1 i P2, ako neko obavezno polje nije popunjeno ili je neispravno (datum završetka pre datuma početka, zbir budžeta faza veći od ukupnog budžeta).
+    \item \textbf{Ispravka:}
+    \begin{enumerate}
+        \item Sistem označava neispravna polja i prikazuje poruku o grešci.
+        \item Producent ispravlja podatke i ponovo potvrđuje unos.
+    \end{enumerate}
+    \item \textbf{Povratak:} na korak 3 osnovnog toka (ako je izazvan korakom 4), na korak 5 osnovnog toka (ako je izazvan korakom 6), odnosno na korak 2 podtoka.
 \end{itemize}
 
 \paragraph*{A2: Budžet je već postavljen}
 \begin{itemize}
-    \item U koraku 3 osnovnog toka, ako projekat već ima budžet, sistem prikazuje postojeće vrednosti za izmenu umesto praznog unosa; izmena se čuva uz razlog.
+    \item \textbf{Izaziva ga:} korak 3 osnovnog toka, ako projekat već ima postavljen budžet.
+    \item \textbf{Ispravka:}
+    \begin{enumerate}
+        \item Sistem prikazuje postojeće vrednosti budžeta i rokova za izmenu.
+        \item Producent menja vrednosti i unosi razlog izmene.
+    \end{enumerate}
+    \item \textbf{Povratak:} na korak 4 osnovnog toka.
 \end{itemize}
 
-\paragraph*{A3: Prekoračenje budžeta faze}
+\paragraph*{A3: Utrošak faze prešao 80\% budžeta ili je budžet prekoračen}
 \begin{itemize}
-    \item U koraku 6 osnovnog toka, ako bi trošak premašio preostala sredstva faze, sistem upozorava producenta i nudi preraspodelu sredstava (podtok P2) ili evidentiranje troška uz obavezno obrazloženje.
+    \item \textbf{Izaziva ga:} korak 6 osnovnog toka, ako utrošak faze pređe 80\% njenog budžeta ili ako trošak premašuje preostala sredstva faze.
+    \item \textbf{Ispravka:}
+    \begin{enumerate}
+        \item Sistem prikazuje upozorenje o stanju budžeta faze. Ako trošak premašuje preostala sredstva, ne evidentira ga dok producent ne izabere nastavak.
+        \item Producent bira preraspodelu sredstava (podtok P1) ili nastavlja bez preraspodele, uz unos obrazloženja ako je budžet prekoračen.
+        \item Sistem evidentira trošak i prikazuje ažurirano stanje faze.
+    \end{enumerate}
+    \item \textbf{Povratak:} na korak 5 osnovnog toka.
 \end{itemize}
 
 \paragraph*{A4: Probijen rok faze}
 \begin{itemize}
-    \item U koraku 7 osnovnog toka i u podtoku P3, ako je datum završetka faze prošao, a faza nije završena, sistem je označava kao ,,kasni'' i nudi izmenu roka (podtok P1).
+    \item \textbf{Izaziva ga:} korak 6 osnovnog toka, ako je datum završetka faze prošao, a faza nije završena.
+    \item \textbf{Ispravka:}
+    \begin{enumerate}
+        \item Sistem označava fazu kao ,,kasni'' i prikazuje upozorenje.
+        \item Producent bira izmenu roka (podtok P2) ili nastavlja bez izmene.
+    \end{enumerate}
+    \item \textbf{Povratak:} na korak 5 osnovnog toka.
 \end{itemize}
 
 \paragraph*{A5: Odustajanje}
 \begin{itemize}
-    \item U bilo kom koraku producent može da odustane; sistem ne čuva nesačuvane izmene i vraća ga na stranicu projekta.
+    \item \textbf{Izaziva ga:} bilo koji korak osnovnog toka ili podtokova, ako producent odustane.
+    \item \textbf{Ispravka:}
+    \begin{enumerate}
+        \item Sistem odbacuje nesačuvane izmene i vraća producenta na stranicu projekta.
+    \end{enumerate}
+    \item \textbf{Povratak:} nema povratka, slučaj upotrebe se završava.
 \end{itemize}
 
 \subsubsection*{Specijalni zahtevi}
@@ -97,25 +116,33 @@ Projektni menadžer obaveštava se o promenama rokova faza, jer na osnovu njih o
 
 \subsubsection*{Dodatne informacije}
 \begin{itemize}
+    \item Budžet i rok se planiraju za faze produkcije: razvoj ideje, scenario, dizajn likova i okruženja, animacija, montaža, postprodukcija i distribucija.
+    \item Polja formulara za budžet projekta: ukupni budžet, valuta.
+    \item Polja formulara za fazu: naziv faze, planirani budžet, datum početka, datum završetka, odgovorni tim.
+    \item Polja formulara za trošak: faza, iznos, datum, opis.
+    \item Polja formulara za preraspodelu sredstava: faza iz koje se prenose sredstva, faza u koju se prenose, iznos, razlog.
+    \item Polja formulara za izmenu roka: novi datum početka, novi datum završetka, razlog izmene.
+    \item Upozorenje se prikazuje kada utrošak faze pređe 80\% njenog budžeta ili kada rok faze bude probijen.
+    \item Projektni menadžer se obaveštava o promeni roka jer na osnovu rokova organizuje produkciju i dodeljuje zadatke.
     \item Pregled izveštaja o realizaciji projekata je zaseban slučaj upotrebe.
 \end{itemize}
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./dijagrami/dijagrami_slucajeva_upotrebe/upravljanje_budzetom_i_rokovima.png}
+	\includegraphics[width=\textwidth]{./dijagrami/dijagrami_slucajeva_upotrebe/1.png}
 	\caption{Dijagram slučaja upotrebe ,,Upravljanje budžetom i rokovima''}
  \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{./dijagrami/dijagrami_aktivnosti/upravljanje_budzetom_i_rokovima.png}
+	\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{./dijagrami/dijagrami_aktivnosti/2.png}
 	\caption{Dijagram aktivnosti ,,Upravljanje budžetom i rokovima''}
  \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./dijagrami/dijagrami_sekvence/upravljanje_budzetom_i_rokovima.png}
+	\includegraphics[width=\textwidth]{./dijagrami/dijagrami_sekvence/3.png}
 	\caption{Dijagram sekvence ,,Upravljanje budžetom i rokovima''}
  \end{figure}
 
