@@ -5,7 +5,13 @@
 Projekat je realizovan u okviru kursa **Informacioni sistemi** na master studijama Matematičkog fakultetu Univerziteta u Beogradu.
 
 ## O Sistemu
-TO-DO
+Sistem omogućava nesmetanu razmenu podataka između učesnika, kao i njihovo bezbedno skladištenje. 
+Neke od slučaja upotrebe, koji su mogući u sistemu, uključuju:
+- Kreiranje filmskog projekta i scenarija
+- Definisanje faza produkcije
+- Formiranje produkcionih timova i dodeljivanje zadataka
+- Predaja i korišćenje materijala
+- Upravljanje budžetom i rokovima
 
 ## Dokumentacija
 Detaljna dokumentacija nalazi se u pdf fajlu **[Informacioni sistem studija za animirane filmove](https://github.com/Mayhemy/IS-2026/blob/main/Informacioni%20sistem%20studija%20za%20animirane%20filmove.pdf)**.
