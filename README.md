@@ -8,7 +8,7 @@ Projekat je realizovan u okviru kursa **Informacioni sistemi** na master studija
 TO-DO
 
 ## Dokumentacija
-TO-DO
+Detaljna dokumentacija nalazi se u pdf fajlu **[Informacioni sistem studija za animirane filmove](https://github.com/Mayhemy/IS-2026/blob/main/Informacioni%20sistem%20studija%20za%20animirane%20filmove.pdf)**.
 
 ## Autori
 
