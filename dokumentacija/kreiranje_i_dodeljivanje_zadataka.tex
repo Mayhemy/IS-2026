@@ -13,13 +13,15 @@ Projektni menadžer pravi zadatke za film i dodeljuje ih članovima tima. Zadata
 \subsubsection*{Preduslovi}
 \begin{itemize}
     \item Projektni menadžer je prijavljen na sistem.
-    \item Za film postoji produkcioni tim.
+    \item Za film postoji produkcioni tim (slučaj upotrebe ,,Formiranje produkcionog tima'').
+    \item Za film su definisane faze produkcije (slučaj upotrebe ,,Definisanje faza produkcije'').
 \end{itemize}
 
 \subsubsection*{Postuslovi}
 \begin{itemize}
     \item Zadatak je dodeljen članu tima i nalazi se u stanju ,,Dodeljen''.
     \item Član kome je zadatak dodeljen je obavešten.
+    \item Ako dodela nije izvršena, zadatak ostaje u stanju u kom je bio.
 \end{itemize}
 
 \subsubsection*{Osnovni tok}
@@ -54,7 +56,7 @@ Koraci 3 do 9 se ponavljaju dok projektni menadžer ima zadataka za dodelu.
 
 \paragraph*{P2: Dodela postojećeg zadatka}
 \begin{enumerate}
-    \item Projektni menadžer bira postojeći zadatak.
+    \item Projektni menadžer bira postojeći zadatak u stanju ,,Kreiran'', ,,Dodeljen'' ili ,,U Radu''.
     \item Sistem prikazuje podatke o zadatku i kome je trenutno dodeljen, ako je dodeljen. Nastavlja se korak 4 osnovnog toka.
 \end{enumerate}
 
@@ -74,7 +76,7 @@ Koraci 3 do 9 se ponavljaju dok projektni menadžer ima zadataka za dodelu.
 \begin{itemize}
     \item U koraku 6 osnovnog toka, ako je izabrani član preopterećen, sistem prikazuje upozorenje.
     \item Ako projektni menadžer izabere drugog člana, nastavlja se korak 5 osnovnog toka.
-    \item Ako projektni menadžer ipak potvrdi dodelu, nastavlja se korak 7 osnovnog toka.
+    \item Ako projektni menadžer ipak potvrdi dodelu (slučaj upotrebe ,,Potvrda dodele preopterećenom članu''), nastavlja se korak 7 osnovnog toka.
 \end{itemize}
 
 \paragraph*{A4: Odustajanje od dodele}
@@ -90,13 +92,15 @@ Koraci 3 do 9 se ponavljaju dok projektni menadžer ima zadataka za dodelu.
 \subsubsection*{Specijalni zahtevi}
 \begin{itemize}
     \item Zadatke filma može da dodeljuje samo projektni menadžer tog filma.
+    \item Zadatak može da se preraspodeli dok je u stanju ,,Dodeljen'' ili ,,U Radu''.
     \item Sistem čuva istoriju dodela i preraspodela zadataka.
 \end{itemize}
 
 \subsubsection*{Dodatne informacije}
 \begin{itemize}
+    \item Podaci o zadatku su naziv, opis, vrsta, faza produkcije i rok.
     \item Vrsta zadatka određuje koji članovi tima mogu da ga dobiju.
-    \item Član je preopterećen kada ima više zadataka nego što sme da ima u isto vreme.
+    \item Član je preopterećen ako bi sa novim zadatkom imao više zadataka nego što sme da ima u isto vreme.
 \end{itemize}
 
 
@@ -112,16 +116,16 @@ Koraci 3 do 9 se ponavljaju dok projektni menadžer ima zadataka za dodelu.
 	\caption{Dijagram aktivnosti ,,Kreiranje i dodeljivanje zadataka''}
  \end{figure}
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\textwidth]{./dijagrami/dijagrami_sekvence/kreiranje_i_dodeljivanje_zadataka.png}
-%	\caption{Dijagram sekvence ,,Kreiranje i dodeljivanje zadataka''}
-% \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{./dijagrami/dijagrami_sekvence/kreiranje_i_dodeljivanje_zadataka.png}
+	\caption{Dijagram sekvence ,,Kreiranje i dodeljivanje zadataka''}
+ \end{figure}
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\textwidth]{./dijagrami/dijagrami_stanja/zadatak.png}
-%	\caption{Dijagram stanja zadatka}
-% \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./dijagrami/dijagrami_stanja/zadatak.png}
+	\caption{Dijagram stanja zadatka}
+ \end{figure}
 
 \newpage
