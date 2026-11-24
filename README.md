@@ -6,7 +6,7 @@ Projekat je realizovan u okviru kursa **Informacioni sistemi** na master studija
 
 ## O Sistemu
 Sistem omogućava nesmetanu razmenu podataka između učesnika, kao i njihovo bezbedno skladištenje. 
-Neke od slučaja upotrebe, koji su mogući u sistemu, uključuju:
+Neki od slučaja upotrebe, koji su mogući u sistemu, uključuju:
 - Kreiranje filmskog projekta i scenarija
 - Definisanje faza produkcije
 - Formiranje produkcionih timova i dodeljivanje zadataka
